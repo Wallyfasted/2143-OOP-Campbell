@@ -37,8 +37,8 @@ using namespace std;
  *      - 
  * Usage: 
  * 
- *      - examples of how
- *      - to use your class 
+ *      -within main enter in ythe values to fill the array with the push command
+ *      (C1.push(#))
  *      
  */
 
@@ -97,6 +97,21 @@ public:
     friend ostream &operator<<(ostream &os, const CircularArrayQue &other);
 };
 
+/**
+     * Public/Private/Protected : ostream &operator<<
+     * 
+     * Description:
+     *      Fills in the array?
+     * 
+     * Params:
+     *      - Char      ostream &os
+     *      - const     CircularArrayQue
+     *      - &         other
+     *      - and one line description
+     * 
+     * Returns:
+     *      - what does this function return (including the type)?
+     */
 ostream &operator<<(ostream &os, const CircularArrayQue &other)
 {
 
