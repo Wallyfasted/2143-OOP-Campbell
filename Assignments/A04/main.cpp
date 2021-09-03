@@ -46,10 +46,10 @@ class CircularArrayQue
 {
 private:
     int *Container;
-    int Front;
-    int Rear;
-    int QueSize; // items in the queue
-    int CurrentSize;
+    int Front;                          //Needed for to create a circular linked array
+    int Rear;                           //Needed ... linked array
+    int QueSize;                        // items in the queue
+    int CurrentSize;    
     void init(int size = 0)
     {
         Front = Rear = CurrentSize = 0;
@@ -58,7 +58,7 @@ private:
 
     bool Full()
     {
-        return CurrentSize == QueSize;
+        return CurrentSize == QueSize;   //returns a true or false
     }
 
 public:
@@ -83,7 +83,7 @@ public:
         }
         else
         {
-            cout << "FULL!!!!" << endl;
+            cout << "FULL!!!!" << endl; 
         }
     }
 
