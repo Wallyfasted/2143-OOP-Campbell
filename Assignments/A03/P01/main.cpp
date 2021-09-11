@@ -1,39 +1,70 @@
 /**
 *                    
-*  Author:           Terry
-*  Title:            Linked List Example
+*  Author:           Samuel Campbell
+*  Title:            Single link list vector 
 *  Course:           2143
 *  Semester:         Fall 2021
 * 
 *  Description:
-*        Linked List Example 
-* 
+*        Uses a singly linked list as the backend for an STL like "vector" 
+*        class definition.
+*
+*   Usage:
+*         Use it like a linked list now. More like a vector next program
+*
+*   Files:
+*        
 */
 #include <fstream>
 #include <iostream>
 #include <string>
-
+#define INF 1000000 
 using namespace std;
 
 // Node for our linked list
-struct node {
-    int data;  // data value (could be a lot more values)
+struct Node {
+    int data;     // data value (could be a lot more values)
 
-    node* next;  // we always need a "link" in a linked list
+    Node* next;   // we always need a "link" in a linked list
 
-    node(int x) {  // cunstructor to make adding values easy
+    Node(int x) { // cunstructor to make adding values easy
         data = x;
         next = NULL;
     }
 };
 
-/**
+/*
  * @brief Load array with values from a file
  * 
  * @param string filename 
  * @param int*& arr 
  * @param int& size 
  */
+
+class MyVector {
+    private: 
+        Node*            head;
+        Node*            tail;
+        int              size;
+        static ofstream  fout;
+        string           fileName;
+        bool             sorted;
+
+
+        void inorderPush(int x) {
+            Node* tempPtr = new Node(x);
+            Node* prev = head;
+            Node* current = head;
+
+            while (current -> data > x) {
+                prev = current;
+                current = current -> next;
+            }
+        }
+
+
+
+};
 void loadArr(string filename, int*& arr, int& size) {
     ifstream fin;         // stream reference
                           //
@@ -73,7 +104,7 @@ void printArr(int* arr, int size) {
 
 class LinkedList {
 private:
-    node* head;  // base pointer of list
+    Node* head;  // base pointer of list
 public:
     /**
      * @brief Default Constructor 
@@ -109,7 +140,7 @@ public:
     }
 
     void Push(int x) {
-        node* tempPtr = new node(x);  // create a new node and
+        Node* tempPtr = new Node(x);  // create a new node and
                                       // add data to it
 
         if (!head) {  // `!head` implies empty list
