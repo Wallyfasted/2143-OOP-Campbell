@@ -86,11 +86,11 @@ public:
         tail =NULL;
         size =0;
 
-        
+
     }
     //takes in a index and puts at that location in list(use size for this then loop index amount of times then place node there)
     void PushAt(int index, int val){
-
+        
     }
     int PopFront(){
         if(head == NULL){
