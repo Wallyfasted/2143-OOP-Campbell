@@ -82,9 +82,12 @@ public:
     }
     //Takes in MyVector and pushhes to the back of the list
     void PushRear(MyVector V2){
-        head =NULL;
-        tail =NULL;
-        size =0;
+        int x = V2.PopFront(); 
+        while (x != -1){
+            PushRear(x);
+            x = V2.PopFront();
+            //cout<<x;
+        }
 
 
     }
@@ -94,8 +97,8 @@ public:
     }
     int PopFront(){
         if(head == NULL){
+          //cout<<"empty\n";
             return -1;
-            cout<<"empty\n";
         }else{
             int value = head->data;
            Node* Temp = head;
@@ -132,11 +135,16 @@ int main()
 {   
     //MyVector test("in1.dat");
     MyVector test;
+    MyVector test2;
+    test2.PushFront(12);
+    test2.PushFront(13);
+    test2.PushFront(14);
+
     test.PushFront(0);
     test.PushFront(1);
     test.PushRear(10);
     test.PushRear(20);
-    test.PopFront();
+    test.PushRear(test2);
     test.Print();
 
     return 0;
