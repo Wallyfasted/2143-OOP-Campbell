@@ -24,27 +24,27 @@
 
 using namespace std;
 
-struct Node {    //struct containing the basic variables needed for
-  int data;      //list traversal and modification    
-  Node* next;
-  Node* prev;
+struct Node { // struct containing the basic variables needed for
+  int data; // list traversal and modification
+  Node *next;
+  Node *prev;
   Node(int x) {
-  data = x;
-  next = NULL;
+    data = x;
+    next = NULL;
   }
 };
 
 /**
  * Class MyVector
- * 
+ *
  * Description:
  *      contains the constructor and functions to modify the linked list
- * 
+ *
  * Public Methods:
  *      -             MyVector()
  *      -             MyVector(int* Arr, int size)
  *       -             MyVector(string filename)
- *       - void        PushFront(int val) 
+ *       - void        PushFront(int val)
  *       - void        PushFront(MyVector V2)
  *       - void        PushFront(int val)
  *       - void        PushRear(int val)
@@ -55,36 +55,35 @@ struct Node {    //struct containing the basic variables needed for
  *       - int         PopRear()
  *       - int         FindAt(int val)
  *       - void        Print()
- *       -             ~MyVector()          
- * 
- * Usage: 
+ *       -             ~MyVector()
  *
- *      MyVector test("in1.dat"); 
+ * Usage:
+ *
+ *      MyVector test("in1.dat");
  *      MyVector test;
  *      MyVector test2;
  *      test.PushRear(19);
  *      test2.PushRear(10)
  *      test.Print();
  *
- *      
+ *
  */
 class MyVector {
- private:
-  Node* head;
-  Node* tail;
+private:
+  Node *head;
+  Node *tail;
   int size;
 
- public:
-
+public:
   /**
     * Public : MyVector
-    * 
+    *
     * Description:
     *  Default Constructor
     *
     * Params:
-    *     
-    *     
+    *
+    *
     * Returns:
     *     none
     */
@@ -96,19 +95,19 @@ class MyVector {
 
   /**
     * Public : MyVector
-    * 
+    *
     * Description:
     *  constructor reads array and pushes into back of list
 
-    * 
+    *
     * Params:
     *     int*  Arr
     *     int   size
-    *     
+    *
     * Returns:
     *     none
     */
-  MyVector(int* Arr, int size) {
+  MyVector(int *Arr, int size) {
     head = NULL;
     tail = NULL;
     size = 0;
@@ -118,21 +117,21 @@ class MyVector {
     }
   }
 
-/**
-    * Public : MyVector( string filename)
-    * 
-    * Description:
-    *  constructor using data from file
+  /**
+      * Public : MyVector( string filename)
+      *
+      * Description:
+      *  constructor using data from file
 
-    * 
-    * Params:
-    *     string filename
-          
-    * 
-    * Returns:
-    *     none
-    */
-  MyVector(string filename) { 
+      *
+      * Params:
+      *     string filename
+
+      *
+      * Returns:
+      *     none
+      */
+  MyVector(string filename) {
     head = NULL;
     tail = NULL;
     size = 0;
@@ -145,23 +144,23 @@ class MyVector {
       PushRear(x);
     }
   }
-  
-   /**
-    * Public : PushFront
-    * 
-    * Description:
-    *  Takes in int val and pushes to the front of the list
 
-    * 
-    * Params:
-    *     int val
-          
-    * 
-    * Returns:
-    *     Void 
-    */
+  /**
+   * Public : PushFront
+   *
+   * Description:
+   *  Takes in int val and pushes to the front of the list
+
+   *
+   * Params:
+   *     int val
+
+   *
+   * Returns:
+   *     Void
+   */
   void PushFront(int val) {
-    Node* Temp = new Node(val);
+    Node *Temp = new Node(val);
     if (head == NULL) {
       head = Temp;
       tail = head;
@@ -171,25 +170,27 @@ class MyVector {
       head = Temp;
       size++;
     }
+   // cout<<"tail: "<<tail->data<<endl;
+   //cout<<"tail&:"<<tail<<endl;
   }
 
   /**
     * Public : PushFront
-    * 
+    *
     * Description:
     *  Takes in int val and pushes to the front of the list
 
-    * 
+    *
     * Params:
     *     MyVector V2
-          
-    * 
+
+    *
     * Returns:
-    *     Void 
+    *     Void
     */
   void PushFront(MyVector V2) {
     int x = V2.PopRear();
-    //cout << x;
+    // cout << x;
     // while (x != -1) {
     //   PushFront(x);
     //   x = V2.PopRear();
@@ -200,20 +201,22 @@ class MyVector {
 
   /**
     * Public : PushRear
-    * 
+    *
     * Description:
     *  Takes in int val and pushes to the back of the list
 
-    * 
+    *
     * Params:
     *     int val
-          
-    * 
+
+    *
     * Returns:
-    *     Void 
+    *     Void
     */
   void PushRear(int val) {
-    Node* Temp = new Node(val);
+    Node *Temp = new Node(val);
+
+    // empty list set everything = to the new node.
     if (head == NULL) {
       head = Temp;
       tail = head;
@@ -225,107 +228,108 @@ class MyVector {
     }
   }
 
-   /**
-    * Public : PushRear
-    * 
-    * Description:
-    *  Takes in MyVector and pushes to the back of the list
+  /**
+   * Public : PushRear
+   *
+   * Description:
+   *  Takes in MyVector and pushes to the back of the list
 
-    * 
-    * Params:
-    *     MyVector V2
-          
-    * 
-    * Returns:
-    *     Void 
-    */
-  void PushRear(MyVector& V2) {
+   *
+   * Params:
+   *     MyVector V2
+
+   *
+   * Returns:
+   *     Void
+   */
+  void PushRear(MyVector &V2) {
     int x = V2.PopFront();
     while (x != -1) {
       PushRear(x);
       x = V2.PopFront();
       size++;
-      cout<<x;
+      //cout << x;
     }
   }
 
- /**
-    * Public : PopAt
-    * 
-    * Description:
-    *  takes in a index and pops at that location in list(use size for this then loop index amount of times then place node there)
+  /**
+     * Public : PopAt
+     *
+     * Description:
+     *  takes in a index and pops at that location in list(use size for this
+     then loop index amount of times then place node there)
 
-    * 
-    * Params:
-    *     int size
-          
-    * 
-    * Returns:
-    *      value if the node at the said index
-    */
-  int popAt(int x)
-  {
-    if (x >= size){
+     *
+     * Params:
+     *     int size
+
+     *
+     * Returns:
+     *      value if the node at the said index
+     */
+     // DONT FORGET ABOUT TAIL
+  int popAt(int x) {
+    if (x >= size) {
       return -1;
-    }
-    else{
-        Node* prev = NULL;  
-        Node* temp = head; 
-        int loc = 0;
-        while (loc != x){
-          prev = temp;
-          temp = temp -> next;
-          loc++;
-        }
-        prev -> next = temp -> next;
-        int cont = temp-> data;
-        delete temp;
-        return cont;
+    } else {
+      Node *prev = NULL;
+      Node *temp = head;
+      int loc = 0;
+      while (loc != x) {
+        prev = temp;
+        temp = temp->next;
+        loc++;
+      }
+      prev->next = temp->next;
+      int cont = temp->data;
+      delete temp;
+      return cont;
     }
   }
-  
+
   /**
     * Public : PushAt
-    * 
+    *
     * Description:
     *      Pushes a node carying a value at a certain index
-       takes in a index and puts at that location in list(use size for this then loop index amount of times then place node there)
-    * 
+       takes in a index and puts at that location in list(use size for this then
+    loop index amount of times then place node there)
+    *
     * Params:
-    *     int index 
+    *     int index
           int val
-    * 
+    *0
     * Returns:
     *      bool  : whether it can successfuly enter in a value
     */
-
+  // CHECK HEAD AND TAIL ARE GOOD
   bool PushAt(int index, int val) {
-    Node* prev = head;            // get previous and next pointers
-    Node* current = head;
-    Node* nNode = new Node(val);  // needed ne memory for new value
+    Node *prev = head; // get previous and next pointers
+    Node *current = head;
+    Node *nNode = new Node(val); // needed ne memory for new value
 
     while (index > 0) {
       prev = current;
       current = current->next;
       index--;
     }
-    cout<<prev->data<<","<<current->data<<endl;
-    prev-> next = nNode;          // Need to point prev (next) to the new memory.
-    nNode -> next = current;      // Need to point nNode's next to current.
-    
+    cout << prev->data << "," << current->data << endl;
+    prev->next = nNode;    // Need to point prev (next) to the new memory.
+    nNode->next = current; // Need to point nNode's next to current.
+
     size++;
     return true;
   }
 
   /**
     * Public : PopFront
-    * 
+    *
     * Description:
     *      Pops front value from list
-    * 
+    *
     * Params:
     *      None
-    * 
+    *
     * Returns:
     *      int  : value at front
     */
@@ -334,103 +338,112 @@ class MyVector {
       return -1;
     } else {
       int value = head->data;
-      Node* Temp = head;
+      Node *Temp = head;
       head = head->next;
       delete Temp;
       size--;
       return value;
-      
     }
   }
 
+  /**
+      * Public : PopRear
+      *
+      * Description:
+      *      Pops rear value from list
+      *
+      * Params:
+      *      None
+      *
+      * Returns:
+      *      int  : value at rear
+      */
 
-/**
-    * Public : PopRear
-    * 
-    * Description:
-    *      Pops rear value from list
-    * 
-    * Params:
-    *      None
-    * 
-    * Returns:
-    *      int  : value at rear
-    */
+
   int PopRear() {
+    // empty list return sentinel value
     if (head == NULL) {
       return -1;
     } else {
-      Node* prev = head;
-      while(prev->next!=tail){
-        prev=prev->next;
-      }
-        int temp= tail->data;
-        delete tail;
-        tail = prev;
-        return temp;
+      Node *prev = head;
+      while (prev->next != tail) {
+        prev = prev->next;
       }
       
+      Node *temp = tail;
+      // cout<<"temp:"<<temp<<endl;
+      int data = tail->data;
+      // cout<<"data:"<<data<<endl;
+      tail = prev;
+      tail->next = nullptr;
+      // cout<<"temp:"<<temp<<endl;
+      // cout<<"tail:"<<temp<<endl;
+      // cout<<"tail:"<<tail->data<<endl;
+      delete temp;
+      return data;
     }
-  
-
-
-/**
-    * Public : Find
-    * 
-    * Description:
-    *      trys to see if the value is in list if not return -1
-    * 
-    * Params:
-    *      int val
-    * 
-    * Returns:
-    *      int  : index
-    */
-  int Find(int val){
-  Node* current = head;
-  int size = 0;
-  while( current != NULL){
-    current = current -> next;
-    size++;
   }
-  current = head;
-  for (int i = 0; i < size; i++){
-    if (current -> data == val){
-      cout << val << " found at index: "<< i << endl;
-      return -1;
-    }else 
-    current = current ->next;
+
+  /**
+      * Public : Find
+      *
+      * Description:
+      *      trys to see if the value is in list if not return -1
+      *
+      * Params:
+      *      int val
+      *
+      * Returns:
+      *      int  : index
+      */
+  int Find(int val) {
+    Node *current = head;
+    int size = 0;
+    while (current != NULL) {
+      current = current->next;
+      size++;
+    }
+    current = head;
+    for (int i = 0; i < size; i++) {
+      if (current->data == val) {
+        cout << val << " found at index: " << i << endl;
+        return -1;
+      } else
+        current = current->next;
     }
     cout << val << " not found" << endl;
     return -1;
-
   }
 
-/**
-    * Public : Print
-    * 
-    * Description:
-    *      prints the list
-    * 
-    * Params:
-    *      none
-    * 
-    * Returns:
-    *      void
-    */
+  /**
+      * Public : Print
+      *
+      * Description:
+      *      prints the list
+      *
+      * Params:
+      *      none
+      *
+      * Returns:
+      *      void
+      */
   void Print() {
-    Node* Temp = head;
+    ofstream fout;
+    fout.open("outfile.txt");
+    Node *Temp = head;
     while (Temp != NULL) {
       cout << Temp->data << "->";
-      
+      fout << Temp->data << "->";
+
       Temp = Temp->next;
     }
     cout << endl;
+    fout << endl;
   }
 
-  ~MyVector() {  
-    Node* curr = head;
-    Node* prev = head;
+  ~MyVector() {
+    Node *curr = head;
+    Node *prev = head;
     while (curr) {
       prev = curr;
       curr = curr->next;
@@ -439,7 +452,6 @@ class MyVector {
     delete curr;
   }
 };
-
 
 int main() {
   // MyVector test("in1.dat");
@@ -450,19 +462,24 @@ int main() {
   test2.PushFront(12);
   test2.PushFront(13);
   test2.PushFront(14);
-
+  test2.PushRear(99);
+  fout << "part 2:"<<endl;
+  test2.Print(); 
   test.PushRear(10);
   test.PushRear(20);
   test.PushRear(30);
   test.PushRear(40);
-  //test.PushAt(2, 2);
-  //test.popAt(2);
-  //test.PushFront(test2);
-  cout << test2.PopRear();
-  test.Print();
+  test.PushAt(2, 2);
+  test.popAt(2);
+  test.PushFront(test2);
+  fout << "test 1:"<<endl;
+  // test2.Print(); 
+  // test2.Print();
   
-  //test.Find(20);
-  
+  // cout << test2.PopRear();
+  // // test.Print();
+
+  // test.Find(20);
 
   return 0;
 }
