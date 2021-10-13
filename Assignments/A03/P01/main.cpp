@@ -188,16 +188,33 @@ public:
     * Returns:
     *     Void
     */
-  void PushFront(MyVector V2) {
-    int x = V2.PopRear();
-    // cout << x;
-    // while (x != -1) {
-    //   PushFront(x);
-    //   x = V2.PopRear();
-    //   cout << x;
-    //   size++;
-    // }
-  }
+    void PushFront(MyVector V2){
+      int v;
+      while((!V2.Empty())){
+        v = V2.PopRear();
+        cout<<v<<endl;
+        PushFront(v);
+    }
+    cout<<"test"<<endl;
+    }
+
+ /**
+    * Public : Empty
+    *
+    * Description:
+    *  
+
+    *checks if the list is empty
+    * Params:
+    *     none
+
+    *
+    * Returns:
+    *     bool
+    */
+    bool Empty(){
+      return size == 0;
+    }
 
   /**
     * Public : PushRear
@@ -242,13 +259,13 @@ public:
    * Returns:
    *     Void
    */
-  void PushRear(MyVector &V2) {
+  void PushRear(MyVector V2) {
     int x = V2.PopFront();
     while (x != -1) {
       PushRear(x);
       x = V2.PopFront();
       size++;
-      //cout << x;
+     
     }
   }
 
@@ -283,6 +300,7 @@ public:
       prev->next = temp->next;
       int cont = temp->data;
       delete temp;
+      size--;
       return cont;
     }
   }
@@ -298,13 +316,13 @@ public:
     * Params:
     *     int index
           int val
-    *0
+    *
     * Returns:
     *      bool  : whether it can successfuly enter in a value
     */
-  // CHECK HEAD AND TAIL ARE GOOD
+
   bool PushAt(int index, int val) {
-    Node *prev = head; // get previous and next pointers
+    Node *prev = head;           // get previous and next pointers
     Node *current = head;
     Node *nNode = new Node(val); // needed ne memory for new value
 
@@ -314,8 +332,8 @@ public:
       index--;
     }
     cout << prev->data << "," << current->data << endl;
-    prev->next = nNode;    // Need to point prev (next) to the new memory.
-    nNode->next = current; // Need to point nNode's next to current.
+    prev->next = nNode;         // Need to point prev (next) to the new memory.
+    nNode->next = current;      // Need to point nNode's next to current.
 
     size++;
     return true;
@@ -358,28 +376,42 @@ public:
       * Returns:
       *      int  : value at rear
       */
-
-
   int PopRear() {
-    // empty list return sentinel value
-    if (head == NULL) {
+    int data;
+    cout<<"size:"<<size<<endl;
+    if (head == NULL) {    // empty list return sentinel value
+      
       return -1;
     } else {
-      Node *prev = head;
-      while (prev->next != tail) {
-        prev = prev->next;
+    
+     if (tail==head){       // dealing with a list with one node
+       data=tail->data;
+       cout<<"ddata:"<<data<<endl;
+       cout<<"deleting head "<<head<<endl;
+       //delete head;
+       head=tail=NULL;
+       size = 0;
+
+     }else{                  // dealing with a list with multiple nodes
+  
+
+        Node *prev = head;
+
+        while (prev->next != tail) {
+          prev = prev->next;
+        }
+        cout<<"tail: "<<tail<<endl;
+        cout<<"head: "<<head<<endl;
+        cout<<"prev: "<<prev<<endl;
+        
+        Node *temp = tail;
+        data = tail->data;
+        tail = prev;
+        tail->next = nullptr;
+        
+        delete temp;
+        size--;
       }
-      
-      Node *temp = tail;
-      // cout<<"temp:"<<temp<<endl;
-      int data = tail->data;
-      // cout<<"data:"<<data<<endl;
-      tail = prev;
-      tail->next = nullptr;
-      // cout<<"temp:"<<temp<<endl;
-      // cout<<"tail:"<<temp<<endl;
-      // cout<<"tail:"<<tail->data<<endl;
-      delete temp;
       return data;
     }
   }
@@ -427,19 +459,24 @@ public:
       * Returns:
       *      void
       */
-  void Print() {
-    ofstream fout;
-    fout.open("outfile.txt");
+  void Print(ofstream &fout) {
+    // ofstream fout;
+    // fout.open("outfile.txt");
+
     Node *Temp = head;
     while (Temp != NULL) {
+      // cout << Temp->data << "--Curr  value--"<<"\n";
       cout << Temp->data << "->";
       fout << Temp->data << "->";
+      // fout << "hi";
 
       Temp = Temp->next;
     }
     cout << endl;
     fout << endl;
+    
   }
+
 
   ~MyVector() {
     Node *curr = head;
@@ -454,32 +491,30 @@ public:
 };
 
 int main() {
-  // MyVector test("in1.dat");
+  MyVector test("in1.dat");
   ofstream fout;
   fout.open("outfile.txt");
-  MyVector test;
+  fout<< "V1: ";
+  test.Print(fout);
   MyVector test2;
   test2.PushFront(12);
   test2.PushFront(13);
   test2.PushFront(14);
   test2.PushRear(99);
-  fout << "part 2:"<<endl;
-  test2.Print(); 
+  fout << "V2: ";
+  test2.Print(fout);
   test.PushRear(10);
   test.PushRear(20);
   test.PushRear(30);
   test.PushRear(40);
   test.PushAt(2, 2);
+  fout<< "V1: ";
+  test.Print(fout);
   test.popAt(2);
+  fout<<"combined: ";
   test.PushFront(test2);
-  fout << "test 1:"<<endl;
-  // test2.Print(); 
-  // test2.Print();
   
-  // cout << test2.PopRear();
-  // // test.Print();
-
-  // test.Find(20);
-
+  test.Print(fout);
+  fout.close();
   return 0;
 }
