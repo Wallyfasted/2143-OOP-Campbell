@@ -491,7 +491,7 @@ public:
 };
 
 int main() {
-  MyVector test("in1.dat");
+  MyVector test("input.dat");
   ofstream fout;
   fout.open("outfile.txt");
   fout<< "V1: ";
