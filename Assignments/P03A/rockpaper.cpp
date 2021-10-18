@@ -233,6 +233,10 @@ map< string, string > Hands::Names = {
     {LIZARD2, "lizard"},
     {SPOCK2, "spock"}};
 
+
+
+    
+
 /**
  * Rock Paper Scissors Lizard Spock
  * 
@@ -258,7 +262,75 @@ public:
     RPSLS(int seed) : DieRoll(seed) {
         cout << "Rock: " << Rock() << endl;
     }
+ 
 };
+
+struct Player: Hands{
+    string weapon1;
+    string weapon2;
+    // other possible stuff
+
+    /**
+     * Constructor guarantees a player has two different "weapons"
+     */
+    Player(){
+        weapon1 = Hands::RandHand();
+        weapon2 = Hands::RandHand();
+
+        while(weapon2==weapon1){
+            weapon2 = Hands::RandHand();
+        }
+    }
+    Player operator>(string Hands){
+        int P1;
+        int P2;
+        if (weapon1 == ROCK2 && weapon2 == PAPER2){
+            P2 > P1;
+        }
+        else if (weapon1 == ROCK2 && weapon2 == SCISSORS2){
+            P1 > P2;
+        }
+        else if (weapon1 == ROCK2 && weapon2 == LIZARD2){
+            P1 > P2;
+        } 
+        else if (weapon1 == ROCK2 && weapon2 == SPOCK2){
+            P2 > P1;
+        }  
+        else if (weapon1 == PAPER2 && weapon2 == ROCK2){
+            P1 > P2;
+        }
+        else if (weapon1 == PAPER2 && weapon2 == SCISSORS2){
+            P2 > P1;
+        }
+        else if (weapon1 == PAPER2 && weapon2 == LIZARD2){
+            P2 > P1;
+        }
+        else if (weapon1 == PAPER2 && weapon2 == SPOCK2){
+            P1 > P2;
+        }
+        else if (weapon1 == SCISSORS2 && weapon2 == ROCK2){
+            P2 > P1;
+        }
+        else if (weapon1 == SCISSORS2 && weapon2 == ROCK2){
+            P2 > P1;
+        }
+        else if (weapon1 == SCISSORS2 && weapon2 == PAPER2){
+            P1 > P2;
+        }
+        else if (weapon1 == SCISSORS2 && weapon2 == LIZARD2){
+            P1 > P2;
+        }
+        else if (weapon1 == SCISSORS2 && weapon2 == SPOCK2){
+            P2 > P1;
+        }
+        else if (weapon1 == LIZARD2 && weapon2 == ROCK2){
+            P
+        }
+    }// other possible methods
+};
+
+
+
 
 int main() {
     cout << "Testing my default emojis for Rock Paper Scissors Lizard Spock" << endl;
@@ -373,5 +445,7 @@ int main() {
 
     cout<<h1<<"+"<<h2<<" vs "
         <<h3<<"+"<<h4<<endl;
+
+    
     return 0;
 }
