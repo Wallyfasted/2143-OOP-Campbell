@@ -1,4 +1,5 @@
-[Running] 
+```cpp
+
 primary:🖖  secondary: 📃
 primary:🐸  secondary:🖖
 player 1's Secondary:📃 Beats Player 2's Secondary:🖖
