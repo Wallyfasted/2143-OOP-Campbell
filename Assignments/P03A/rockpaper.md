@@ -311,6 +311,7 @@ public:
   * Returns:
   *     N/A
   */
+
   Player(){ 
       // random primary and secondary
       primary = RandWeapon();
@@ -335,6 +336,7 @@ public:
   * Returns:
   *     N/A
   */
+
   Player(string w1,string w2){
     primary = w1;
     secondary = w2;                           // both weapons assigned
@@ -358,6 +360,7 @@ public:
   * Returns:
   *     bool
   */
+
   bool operator>(const Player& other){
     // check if they equal first
     while(this->primary == other.primary){
