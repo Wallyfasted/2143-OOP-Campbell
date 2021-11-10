@@ -48,7 +48,7 @@ using namespace std;
 #define SPOCK2 u8"\U0001F596"
 
 
-/**
+    /**
     * Public : map< string, string > Weapons & map< string, string > Names 
     * 
     * Description:
@@ -79,7 +79,7 @@ map< string, string > Names = {
 };
 
 
-/**
+    /**
     * Public : map <string , vector<string>> rules
     * 
     * Description:
@@ -103,7 +103,7 @@ map <string , vector<string>> rules = {
     {"spock", {"rock","scissors"}}
 };
 
-/**
+    /**
     * Public : string RandWeapon()
     * 
     * Description:
@@ -125,7 +125,7 @@ string RandWeapon() {
     return random_weapon;  // return rand emoji
 }
 
-/**
+    /**
     * Public : bool beats()
     * 
     * Description:
@@ -150,7 +150,7 @@ bool beats(string hand1, string hand2){
 }
 
 
-/**
+  /**
  * Class Weapon
  * 
  * Description:
@@ -175,7 +175,7 @@ class Weapon{
   friend class Player;
 public:
 
-/**
+    /**
     * Public : Weapon()
     * 
     * Description:
@@ -191,7 +191,7 @@ public:
     name = RandWeapon();
   }
 
-  /**
+    /**
     * Public : Weapon(string w)
     * 
     * Description:
@@ -207,20 +207,20 @@ public:
     name = w;
   }
 
- /**
-    * Public : operator<<(ostream &os,const Weapon &w)
-    * 
-    * Description:
-    *   Overloading << operator so when a weapon prints it prints the name
-    *   and that name will appear as an emoji
-    *  
-    * Params:
-    *    -  ostream     &os,
-    *    -  const       Weapon &w
-    * 
-    * Returns:
-    *     friend os << Weapon[w.name]
-    */
+  /**
+  * Public : operator<<(ostream &os,const Weapon &w)
+  * 
+  * Description:
+  *   Overloading << operator so when a weapon prints it prints the name
+  *   and that name will appear as an emoji
+  *  
+  * Params:
+  *    -  ostream     &os,
+  *    -  const       Weapon &w
+  * 
+  * Returns:
+  *     friend os << Weapon[w.name]
+  */
   friend ostream& operator<<(ostream &os,const Weapon &w){
     return os << Weapons[w.name];
   }
@@ -270,7 +270,7 @@ public:
 };
 
 
-/**
+  /**
  * Class Player:Weapon
  * 
  * Description:
@@ -297,7 +297,7 @@ class Player:Weapon{
 
 public: 
 
-/**
+  /**
   * Public : Player()
   * 
   * Description:
