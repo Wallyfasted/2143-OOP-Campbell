@@ -10,11 +10,11 @@ Creates a rock paper scissors game that has two players with two weapons each. I
 
 ### Instructions
 
-  #include <iostream>
-  #include <functional>  
-  #include <map>
-  #include <random>
-  #include <string>
-  #include <ctime>
-  #include <vector>
-  #include <algorithm>
+#include iostream
+#include functional  
+#include map
+#include random
+#include string
+#include ctime
+#include vector
+#include algorithm
