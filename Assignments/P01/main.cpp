@@ -488,33 +488,47 @@ public:
     }
     delete curr;
   }
+
+     friend ostream& operator<<(ostream& os, const MyVector& rhs) {
+        Node* temp = rhs.head;  // temp pointer copies head
+
+        while (temp) {  // this loops until temp is NULL
+                        // same as `while(temp != NULL)`
+
+            os << temp->data;  // print data from Node
+            if (temp->next) {
+                os << "->";
+            }
+            temp = temp->next;  // move to next Node
+        }
+        os << endl;
+        return os;
+     }
 };
 
 int main() {
-  MyVector test("input.dat");
-  ofstream fout;
-  fout.open("outfile.txt");
-  fout<< "V1: ";
-  test.Print(fout);
-  MyVector test2;
-  test2.PushFront(12);
-  test2.PushFront(13);
-  test2.PushFront(14);
-  test2.PushRear(99);
-  fout << "V2: ";
-  test2.Print(fout);
-  test.PushRear(10);
-  test.PushRear(20);
-  test.PushRear(30);
-  test.PushRear(40);
-  test.PushAt(2, 2);
-  fout<< "V1: ";
-  test.Print(fout);
-  test.popAt(2);
-  fout<<"combined: ";
-  test.PushFront(test2);
-  
-  test.Print(fout);
-  fout.close();
+    MyVector V1;
+    MyVector V2("input.dat");
+
+    // V2.sortList();
+
+    V1.PushFront(56);
+    V1.PushFront(42);
+    V1.PushFront(30);
+    V1.PushFront(48);
+
+    // V1.sortList();
+    cout << V1 << endl;
+
+    V1.PushAt(3, 88);
+    cout << V1 << endl;
+    // V1.sortList();
+    // cout << V1 << endl;
+
+    V2.PushRear(V1);
+    cout << V2 << endl;
+
+    // V2.sortList();
+    // cout << V2 << endl;
   return 0;
 }
