@@ -2,7 +2,6 @@
 #include <random>
 #include <string>
 #include <vector>
-
 #include "weapon.hpp"
 #include "helpers.hpp"
 
@@ -13,20 +12,21 @@ using namespace std;
 
 class BaseFighter {
   protected:
-    int currhp;
+    //int currhp;
     int maxhp;
     double regenR;
     int FlameWeapon;
     
 public:
     string name;
+    int currhp;
     Weapon *weapon;
     Weapon *weapon2;
 
     BaseFighter(){
         name = "None";
         maxhp = 15;
-        currhp = maxhp;
+        currhp = 0;
         regenR = (rand()%70)/100;
         weapon = new Weapon;
         FlameWeapon = rand()%10;
@@ -66,7 +66,7 @@ public:
       }
     }
 
-  virtual void weaponupgrade() = 0;
+  virtual void weaponupgrade()=0;
 };
 
 class Warrior: public BaseFighter{
@@ -112,9 +112,10 @@ class Wizard: public BaseFighter{
     }
     void weaponupgrade(){
       if(!FlameWeapon){
-        weapon = new FlameSword();
+        weapon = new FlameBow();
       }
     }
+     
 };
 
 class Archer: public BaseFighter{
@@ -171,7 +172,7 @@ class DragonBorn: public BaseFighter{
     int dice;
   public:
     DragonBorn(){
-      name = "Dragonborn";
+      name = "Dragon Born";
       dice = 8;
       maxhp += rand()%8;
       currhp += maxhp;
@@ -179,15 +180,15 @@ class DragonBorn: public BaseFighter{
       weapon2 = new FlameSword();
     }
     int attack(){
-      cout<<" Dragonborn Attacks!"<<endl;
+      cout<<" Dragon Born Attacks!"<<endl;
       int r = weapon -> die -> roll();
       cout << r << endl;
       return r;
     }
+  
   void weaponupgrade(){
       if(!FlameWeapon){
         weapon = new FlameSword();
       }
-    }
-  
+  }
 };
