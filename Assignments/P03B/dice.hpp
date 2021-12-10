@@ -6,7 +6,20 @@
 using namespace std;
 
 #pragma once
-
+/**
+ * Class Die
+ * 
+ * Description:
+ *      
+ * 
+ * Public Methods:
+ *      -                   Die():sides{6}
+ *                          Die(int sides):sides{sides}
+ *                          int roll(int rolls = 1)
+ *                          friend ostream& operator<<(ostream &os,const Die& d)
+ *                          
+ *      -                  
+*/
 class Die {
     int sides;
 public:
@@ -24,7 +37,19 @@ public:
     }
 };
 
-
+/**
+ * Class Dice
+ * 
+ * Description:
+ *      
+ * 
+ * Public Methods:
+ *      -                   Dice()
+ *                          Dice(int n, int s)
+ *                          void init(int n,int s)
+ *                          int roll(int rolls = 1)
+ *                          friend ostream& operator<<(ostream &os,const Dice& d)   -                  
+*/
 class Dice {
 private:
     vector< Die > dice;

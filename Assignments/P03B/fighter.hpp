@@ -9,7 +9,25 @@ using namespace std;
 
 #pragma once
 
-
+/**
+ * Class BaseFighter
+ * 
+ * Description:
+ *      acts as a base class for all the fighter types
+ * 
+ * Public Methods:
+ *      -                   BaseFighter()
+ *      -                   int getcurrhp()
+ *       -                  int getmaxhp()
+ *                          virtual int attack()=0
+ *                          void takeDamage(int x)
+ *                          string getName()
+ *                          void regen()
+ *                          void heal(){
+ *                          bool alive()
+ *                          virtual void weaponupgrade()=0
+ *                          
+*/
 class BaseFighter {
   protected:
     //int currhp;
@@ -27,9 +45,9 @@ public:
         name = "None";
         maxhp = 15;
         currhp = 0;
-        regenR = (rand()%70)/100;
+        regenR = (rand()%70)/100;     //health regen rate
         weapon = new Weapon;
-        FlameWeapon = rand()%10;
+        FlameWeapon = rand()%10;      //used for weapon upgrade
         
     }
     int getcurrhp(){
@@ -185,10 +203,10 @@ class DragonBorn: public BaseFighter{
       cout << r << endl;
       return r;
     }
-  
+
   void weaponupgrade(){
-      if(!FlameWeapon){
-        weapon = new FlameSword();
+      if(!FlameWeapon){           //since function is pure virtual in parent
+        weapon = new FlameSword();//need to upgrade the weapon
       }
   }
 };

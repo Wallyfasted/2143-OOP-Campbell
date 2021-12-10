@@ -1,3 +1,18 @@
+/**
+ * Class Weapon
+ * 
+ * Description:
+ *      acts as a base class for the weapons that the fighters will use
+ * 
+ * Public Methods:
+ *      -                   Weapon()
+ *      -                   Weapon(vector< string > choices)
+ *       -                  double use()
+ *                          string getDamage()
+ *                          friend ostream& operator<<(ostream& os, const Weapon& w) {
+ *                          string getName()
+*/
+
 #include <iostream>
 #include <string>
 #include <vector>
@@ -11,18 +26,13 @@ using namespace std;
 
 class Weapon{
   protected:
-  //  string name;    // name of weapon
-    string damage;  // damage per roll or "use"
-  //  Dice*  die;
+  string damage;  // damage per roll or "use"
+  
 
   public:
     string name;
     Dice* die;
     string weaponTxt;
-    /**
-     * @brief Construct a new Base Weapon object
-     *  Also invokes the Dice class constructor with the "die" type
-     */
    
     Weapon(){
         name = "Fists&Feet";
